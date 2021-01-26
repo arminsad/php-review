@@ -21,7 +21,7 @@ if (isset($_GET['playlist_id']) && !empty($_GET['playlist_id'])) {
     $playlist_nt = $statement->fetchAll(PDO::FETCH_OBJ);
     $playlist_name = $playlist_nt->name;
     echo '<script type="text/javascript">';
-    echo ' alert("No tracks found for " . $playlist_name)'; 
+    echo ' alert("No tracks found for ")'; 
     echo '</script>';
 }
 
