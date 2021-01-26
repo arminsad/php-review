@@ -10,10 +10,11 @@ if (file_exists(__DIR__ . '/.env')){
 $pdo = new PDO($_ENV['PDO_CONNECTION_STRING']);
 
 if (!isset($_GET['playlist']) || empty($_GET['playlist'])) {
-	$error = "Invalid Playlist ID.";
+    header("Location: playlists.php");
+    exit();
 }
 else{
-    $playlist_id = $_GET['playlist'];
+$playlist_id = $_GET['playlist'];
 $sql = "
 SELECT tracks.name, albums.title, artists.name as artist_name, unit_price, genres.name as genre_name
 FROM tracks 
@@ -32,8 +33,21 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 $tracks = $statement->fetchAll(PDO::FETCH_OBJ);
 if(empty($tracks)){
-    header("Location: playlists.php?playlist_id=<?php echo $playlist_id ?>");
-    exit();
+    $pdo = new PDO($_ENV['PDO_CONNECTION_STRING']);
+    $sql = "
+    SELECT id, name 
+    FROM playlists
+    WHERE id = $playlist_id;
+    ";
+
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $playlist_nt = $statement->fetchAll(PDO::FETCH_OBJ);
+    var_dump($playlist_nt);
+    $playlist_name = $playlist_nt->name;
+    echo '<script type="text/javascript">';
+    echo ' alert("No tracks found for ")'; 
+    echo '</script>'; 
 }
 }
 ?>
