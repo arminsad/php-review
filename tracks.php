@@ -45,7 +45,8 @@ if(empty($tracks)){
     $playlist_nt = $statement->fetchAll(PDO::FETCH_OBJ);
     $playlist_name = $playlist_nt["name"];
     echo '<script type="text/javascript">';
-    echo ' alert("No tracks found for <?php echo $playlist_name;?> ")'; 
+    echo 'var name = "<?php echo $playlist_name?>";';
+    echo ' alert("No tracks found for " . name)'; 
     echo '</script>'; 
 }
 }
