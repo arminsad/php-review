@@ -43,7 +43,9 @@ if(empty($tracks)){
     $statement = $pdo->prepare($sql);
     $statement->execute();
     $playlist_nt = $statement->fetchAll(PDO::FETCH_OBJ);
-    $playlist_name = $playlist_nt->name;
+    foreach ($playlist_nt as $playlist) :
+    $playlist_name = $playlist->name;
+    endforeach;
     var_dump($playlist_name);
 
 }
