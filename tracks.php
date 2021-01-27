@@ -46,12 +46,13 @@ if(empty($tracks)){
     foreach ($playlist_nt as $playlist) :
     $playlist_name = $playlist->name;
     endforeach;
-    var_dump($playlist_name);
-
+    $error = "No tracks found for " . $playlist_name;
 }
 }
 ?>
-
+<?php if( isset($error) && !empty($error)) :?>
+    <?php echo $error; ?>
+<?php else : ?>
 <table>
     <thead>
         <tr>
@@ -84,3 +85,4 @@ if(empty($tracks)){
     <?php endforeach ?>
     </tbody>
 </table>
+<?php endif; ?>
