@@ -1,1 +1,1 @@
-[Go visit my Heroku app]{https://arminsadphp-review.herokuapp.com/playlists.php}
+[Go visit my Heroku app]{https://arminsadphp-review.herokuapp.com/}
