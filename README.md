@@ -1,1 +1,1 @@
-[Go visit my Heroku app]{https://git.heroku.com/arminsadphp-review.git}
+[Go visit my Heroku app]{https://arminsadphp-review.herokuapp.com/}
